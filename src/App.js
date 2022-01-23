@@ -7,6 +7,8 @@ import ListPage from './pages/List'
 import ModifyPage from './pages/Modify'
 import WritePage from './pages/Write'
 
+import ResetStyles from './components/shared/ResetStyles'
+
 const Container = styled.div`
   max-width: 800px;
   width: 100%;
@@ -21,12 +23,14 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container>
+      <ResetStyles />
       <BrowserRouter>
-        <div>나는 유지된다 ...</div>
+        {/* <div>나는 유지된다 ...</div> */}
         <Routes>
           <Route path="/" element={<ListPage />} />
           <Route path="/write" element={<WritePage />} />
-          <Route path="/detail" element={<DetailPage />} />
+          {/* detail/123 => id = 123, detail/222 => id = 222 */}
+          <Route path="/detail/:id" element={<DetailPage />} />
           <Route path="/modify" element={<ModifyPage />} />
           <Route path="/banner" element={<BannerPage />} />
           <Route
