@@ -31,7 +31,7 @@ const Menu = styled.li`
   `}
 `
 
-const FilterTab = () => {
+const FilterTab = ({ selectedFilter, onClick }) => {
   /**
    * const [a, b] = [1, 2] => a = 1, b = 2
    *
@@ -42,7 +42,17 @@ const FilterTab = () => {
   return (
     <Container>
       {Object.entries(FILTER_LABELS).map(([type, label]) => {
-        return <Menu key={type}>{label}</Menu>
+        return (
+          <Menu
+            key={type}
+            active={selectedFilter === type}
+            onClick={() => {
+              onClick(type)
+            }}
+          >
+            {label}
+          </Menu>
+        )
       })}
     </Container>
   )
